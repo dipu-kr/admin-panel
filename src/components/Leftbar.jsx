@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { NavLink, Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -18,145 +17,130 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 const Leftbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showAdmin, setShowAdmin] = useState(true);
-  console.log(isSidebarOpen);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setShowAdmin(!showAdmin);
   };
 
+  const menuList = [
+    {
+      title: "Dashboard",
+      icon: <HomeOutlinedIcon />,
+      link: "/",
+    },
+    {
+      title: "Users",
+      icon: <PeopleOutlinedIcon />,
+      link: "/users",
+    },
+    {
+      title: "Contacts Information",
+      icon: <ContactsOutlinedIcon />,
+      link: "/contact&information",
+    },
+    {
+      title: "Invoices Balances",
+      icon: <ReceiptOutlinedIcon />,
+      link: "/invoices&Balances",
+    },
+    {
+      title: "Profile Form",
+      icon: <PersonOutlinedIcon />,
+      link: "/profile&Form",
+    },
+    {
+      title: "Calender",
+      icon: <CalendarTodayOutlinedIcon />,
+      link: "/calender",
+    },
+    {
+      title: "FAQ Page",
+      icon: <HelpOutlineOutlinedIcon />,
+      link: "/faq&page",
+    },
+    {
+      title: "Bar Chart",
+      icon: <BarChartOutlinedIcon />,
+      link: "/bar&Chart",
+    },
+    {
+      title: "Pie Chart",
+      icon: <PieChartOutlineOutlinedIcon />,
+      link: "/pie&Chart",
+    },
+    {
+      title: "Line Chart",
+      icon: <TimelineOutlinedIcon />,
+      link: "/line&Chart",
+    },
+  ];
+  // --------------------------------------------
+
   return (
-    <div style={({ height: "100vh" }, { display: "flex" })}>
-      <Sidebar
-        collapsed={!isSidebarOpen}
-        backgroundColor="#1a2233"
-        color="#979aaa"
-        rtl={false}
-        style={{ height: "100vh" }}
+    <div className="h-screen bg-[#1a2233] ">
+      <div
+        className={
+          isSidebarOpen === true
+            ? "w-[250px] h-screen transition-all duration-300 delay-75 ease-linear text-white"
+            : "w-[100px] h-screen transition-all duration-300 delay-75 ease-linear text-white"
+        }
       >
-        <Menu
-          menuItemStyles={{
-            button: ({ level, active, disabled }) => {
-              return {
-                backgroundColor: active ? "#eecef9" : undefined,
-              };
-            },
-          }}
+        <Box
+          className={
+            isSidebarOpen === true
+              ? "w-[250px] transition-all duration-300 delay-75 ease-linear flex justify-between border-b border-gray-600 px-[20px] py-4"
+              : "w-[100px]  transition-all duration-300 delay-75 ease-linear flex justify-center items-center border-b border-gray-600 py-4"
+          }
         >
-          <Box className="flex  justify-between px-[25px] py-3 border-b border-gray-600 text-white">
-            {showAdmin && (
-              <h3 className="text-xl text-green-700 font-bold">ADMIN</h3>
-            )}
+          {showAdmin && (
+            <h3 className="text-xl text-green-700 font-bold">ADMIN</h3>
+          )}
 
-            <Typography>
-              <MenuOutlinedIcon
-                style={{ fontSize: "30px" }}
-                className="cursor-pointer"
-                onClick={() => {
-                  toggleSidebar();
-                }}
-              />
-            </Typography>
-          </Box>
-
-          <MenuItem
-            style={{ color: "white", marginTop: "15px" }}
-            icon={<HomeOutlinedIcon />}
-            // component={<Link to="/" />}
-          >
-            Dashboard
-          </MenuItem>
-          {/* ------------------------------------ */}
-          <Typography sx={{ m: "10px 0 0 10px" }} style={{ color: "white" }}>
-            DATA
+          <Typography className="transition-all duration-500 delay-75 ease-linear">
+            <MenuOutlinedIcon
+              style={{ fontSize: "30px" }}
+              className="cursor-pointer"
+              onClick={() => {
+                toggleSidebar();
+              }}
+            />
           </Typography>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<PeopleOutlinedIcon />}
-            component={<Link to="/e-commerce" />}
-          >
-            Users
-          </MenuItem>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<ContactsOutlinedIcon />}
-            component={<Link to="/calendar" />}
-          >
-            {" "}
-            Contacts Information
-          </MenuItem>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<ReceiptOutlinedIcon />}
-            component={<Link to="/calendar" />}
-          >
-            {" "}
-            Invoices Balances
-          </MenuItem>
-          {/* -----------------
-          --------------------- */}
-          <Typography sx={{ m: "10px 0 0 10px" }} style={{ color: "white" }}>
-            PAGES
-          </Typography>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<PersonOutlinedIcon />}
-            component={<Link to="/documentation" />}
-          >
-            Profile Form
-          </MenuItem>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<CalendarTodayOutlinedIcon />}
-            component={<Link to="/calendar" />}
-          >
-            {" "}
-            Calendar
-          </MenuItem>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<HelpOutlineOutlinedIcon />}
-            component={<Link to="/e-commerce" />}
-          >
-            FAQ Form
-          </MenuItem>
-
-          <SubMenu
-            label="More"
-            icon={<MoreVertOutlinedIcon />}
-            style={{ color: "white" }}
-          >
-            <MenuItem> Setting</MenuItem>
-            <MenuItem> Message </MenuItem>
-          </SubMenu>
-
-          {/* -------------------------------------------- */}
-          <Typography sx={{ m: "10px 0 0 10px" }} style={{ color: "white" }}>
-            CHARTS
-          </Typography>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<BarChartOutlinedIcon />}
-            component={<Link to="/documentation" />}
-          >
-            Bar Chart
-          </MenuItem>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<PieChartOutlineOutlinedIcon />}
-            component={<Link to="/calendar" />}
-          >
-            Pie Chart
-          </MenuItem>
-          <MenuItem
-            style={{ color: "white" }}
-            icon={<TimelineOutlinedIcon />}
-            component={<Link to="/e-commerce" />}
-          >
-            Line Chart
-          </MenuItem>
-        </Menu>
-        {/* </SidebarContent> */}
-      </Sidebar>
+        </Box>
+        <Box>
+          <ul>
+            <li
+              className={
+                !isSidebarOpen &&
+                "transition-all duration-300 delay-75 ease-linear"
+              }
+            >
+              {menuList.map((menu, index) => (
+                <NavLink
+                  to={menu.link}
+                  style={({ isActive }) => ({
+                    color: isActive ? "#059142" : "",
+                  })}
+                  key={index}
+                >
+                  <div
+                    className={
+                      isSidebarOpen === true
+                        ? "w-[250px]  flex mt-4 py-2 px-[20px] hover:bg-[#2c3954]"
+                        : "w-[100px]  transition-all duration-150 delay-75 ease-linear p-2 mt-4 flex justify-center items-center hover:bg-[#2c3954]"
+                    }
+                  >
+                    <Typography className="text-[10px]">{menu.icon}</Typography>
+                    {showAdmin && (
+                      <Typography className="pl-4">{menu.title}</Typography>
+                    )}
+                  </div>
+                </NavLink>
+              ))}
+            </li>
+          </ul>
+        </Box>
+      </div>
     </div>
   );
 };
