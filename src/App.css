@@ -44,10 +44,18 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #0f1328;
+  padding: 8px;
 }
 
 /* ----------sidebar bg color and text color-------- */
 .apple {
   background-color: #252b36;
   /* color: #979aaa; */
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: none !important;
 }

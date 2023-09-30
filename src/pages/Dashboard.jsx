@@ -1,28 +1,61 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import { BiBell, BiUser } from "react-icons/bi";
-import { MdOutlineSettings } from "react-icons/md";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { Box, Typography, Button } from "@mui/material";
+import { IoMdDownload } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
+import StateBox from "../components/StateBox";
 
 const Dashboard = () => {
   return (
-    <Box className="h-screen border px-3 py-2">
-      <Box className="flex justify-between items-center">
-        <Box className="flex justify-between items-center bg-[#252b36] rounded-[1px] px-2 cursor-pointer">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-transparent py-1 pl-2 border-none outline-none text-white text-[14px]"
-          />
-          <SearchOutlinedIcon className="text-white" />
+    <Box className="h-[calc(100vh-46px)]">
+      <Box className="flex justify-between items-end my-4">
+        <Box>
+          <Typography
+            variant="h6"
+            component="h6"
+            className="text-white uppercase"
+          >
+            dashboard
+          </Typography>
+          <p className="text-[#16a37f] text-[14px]">welcome to the dashboard</p>
         </Box>
-        <Typography className="text-white text-[13px] flex justify-center items-center gap-4">
-          <BiBell className="text-[20px]" />
-          <MdOutlineSettings className="text-[20px]" />
-          <BiUser className="text-[20px]" />
-        </Typography>
+        <button className="h-[32px] bg-[#536DFE] hover:bg-[#3D5AED] transition-all px-4 text-white font-medium uppercase text-[12px] shadow-md rounded flex items-center justify-start">
+          <span className="mr-2">
+            <IoMdDownload />
+          </span>
+          <span className="flex items-center justify-start">
+            download reports
+          </span>
+        </button>
+      </Box>
+      <Box className="grid grid-cols-4 gap-4">
+        <StateBox
+          title="12,361"
+          subtitle="Emails Sent"
+          progress="0.75"
+          increase="+18%"
+          icon={<MdEmail />}
+        />
+        <StateBox
+          title="12,361"
+          subtitle="Emails Sent"
+          progress="0.75"
+          increase="+18%"
+          icon={<MdEmail />}
+        />
+        <StateBox
+          title="12,361"
+          subtitle="Emails Sent"
+          progress="0.75"
+          increase="+18%"
+          icon={<MdEmail />}
+        />
+        <StateBox
+          title="12,361"
+          subtitle="Emails Sent"
+          progress="0.75"
+          increase="+18%"
+          icon={<MdEmail />}
+        />
       </Box>
     </Box>
   );

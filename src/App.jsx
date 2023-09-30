@@ -1,5 +1,6 @@
 import "./App.css";
 import Leftbar from "./components/Leftbar";
+import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import { Routes, Route } from "react-router-dom";
 
@@ -10,6 +11,7 @@ function App() {
         <Leftbar />
       </div>
       <div className="right_container">
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
           <Route

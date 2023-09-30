@@ -94,7 +94,7 @@ const Leftbar = () => {
           }
         >
           {showAdmin && (
-            <h3 className="text-xl text-green-700 font-bold">ADMIN</h3>
+            <h3 className="text-xl text-[#16a37f] font-bold">ADMIN</h3>
           )}
 
           <Typography className="transition-all duration-500 delay-75 ease-linear">
@@ -119,7 +119,7 @@ const Leftbar = () => {
                 <NavLink
                   to={menu.link}
                   style={({ isActive }) => ({
-                    color: isActive ? "#059142" : "",
+                    color: isActive ? "#16a37f" : "",
                   })}
                   key={index}
                 >
