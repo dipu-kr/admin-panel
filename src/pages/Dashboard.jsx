@@ -1,7 +1,8 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { IoMdDownload } from "react-icons/io";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdPointOfSale, MdTraffic } from "react-icons/md";
+import { FaUserPlus } from "react-icons/fa";
 import StateBox from "../components/StateBox";
 
 const Dashboard = () => {
@@ -31,30 +32,30 @@ const Dashboard = () => {
         <StateBox
           title="12,361"
           subtitle="Emails Sent"
-          progress="0.75"
-          increase="+18%"
+          progress="84"
+          increase="+84%"
           icon={<MdEmail />}
         />
         <StateBox
-          title="12,361"
-          subtitle="Emails Sent"
-          progress="0.75"
-          increase="+18%"
-          icon={<MdEmail />}
+          title="20,361"
+          subtitle="Sales Obtained"
+          progress="23"
+          increase="+23%"
+          icon={<MdPointOfSale />}
         />
         <StateBox
-          title="12,361"
-          subtitle="Emails Sent"
-          progress="0.75"
-          increase="+18%"
-          icon={<MdEmail />}
+          title="5,361"
+          subtitle="New Clients"
+          progress="8"
+          increase="+8%"
+          icon={<FaUserPlus />}
         />
         <StateBox
-          title="12,361"
-          subtitle="Emails Sent"
-          progress="0.75"
-          increase="+18%"
-          icon={<MdEmail />}
+          title="123,361"
+          subtitle="Traffic Received"
+          progress="42"
+          increase="+24%"
+          icon={<MdTraffic />}
         />
       </Box>
     </Box>

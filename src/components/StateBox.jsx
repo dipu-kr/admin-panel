@@ -1,4 +1,6 @@
 import React from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const StateBox = ({ title, subtitle, progress, icon, increase }) => {
   return (
@@ -8,8 +10,20 @@ const StateBox = ({ title, subtitle, progress, icon, increase }) => {
         <span className="text-white text-[14px]">{title}</span>
         <span className="text-[13px]">{subtitle}</span>
       </div>
-      <div className="flex flex-col gap-1">
-        <span>{progress}</span>
+      <div className="flex flex-col gap-2">
+        <div className="w-[35px] h-[35px]">
+          <CircularProgressbar
+            value={progress}
+            text={`${progress}%`}
+            styles={buildStyles({
+              // Colors
+              pathColor: "#16a37f",
+              textColor: "#16a37f",
+              trailColor: "#3b444b",
+              backgroundColor: "#3e98c7",
+            })}
+          />
+        </div>
         <span className="text-[13px]">{increase}</span>
       </div>
     </div>
