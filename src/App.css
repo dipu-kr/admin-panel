@@ -59,3 +59,24 @@ select,
 textarea {
   line-height: none !important;
 }
+
+.transaction-card::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+/* Track */
+.transaction-card::-webkit-scrollbar-track {
+  background: gray;
+}
+
+/* Handle */
+.transaction-card::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+/* Handle on hover */
+.transaction-card::-webkit-scrollbar-thumb:hover {
+  background: #e9e4e4;
+}
