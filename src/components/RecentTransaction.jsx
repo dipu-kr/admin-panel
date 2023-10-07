@@ -87,8 +87,11 @@ const RecentTransaction = () => {
       <div className="flex items-center p-2 border-b-2 border-gray-900">
         <p className="text-[13px]">Recent Transactions</p>
       </div>
-      {transactionData?.map((val) => (
-        <div className="flex justify-between items-center text-white text-[12px] border-t-2 border-b-2 border-gray-900 p-1 ">
+      {transactionData?.map((val, index) => (
+        <div
+          className="flex justify-between items-center text-white text-[12px] border-t-2 border-b-2 border-gray-900 p-1"
+          key={index}
+        >
           <div className="w-1/3 truncate">
             <p className="text-[#16a37f]">{val.id}</p>
             <p className="capitalize">{val.name}</p>

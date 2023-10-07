@@ -12,9 +12,8 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
-const Leftbar = () => {
+const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showAdmin, setShowAdmin] = useState(true);
 
@@ -145,4 +144,4 @@ const Leftbar = () => {
   );
 };
 
-export default Leftbar;
+export default Sidebar;

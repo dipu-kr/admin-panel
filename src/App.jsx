@@ -1,5 +1,5 @@
 import "./App.css";
-import Leftbar from "./components/Leftbar";
+import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import { Routes, Route } from "react-router-dom";
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app">
       <div className="left_container">
-        <Leftbar />
+        <Sidebar />
       </div>
       <div className="right_container">
         <Navbar />

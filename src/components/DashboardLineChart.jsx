@@ -81,12 +81,14 @@ export const data = {
 
 const DashboardLineChart = () => {
   return (
-    <div className="w-full p-2">
+    <div className="w-full max-h-[calc(100vh-38px-8px-8px-50px-90px-32px-20px)] p-2">
       <div>
         <p className="text-[13px]">Revenue Generated</p>
         <p className="text-[13px] text-[#16a37f] font-semibold">$2,30,344</p>
       </div>
-      <Line options={options} data={data} />
+      <div className="w-full max-h-[calc(100vh-38px-8px-8px-50px-90px-32px-20px-50px)]">
+        <Line options={options} data={data} />
+      </div>
     </div>
   );
 };
