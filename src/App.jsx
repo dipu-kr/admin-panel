@@ -2,6 +2,7 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
+import PageNotFound from "./pages/PageNotFound";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
             path="/line&Chart"
             element={<h1 className="text-green-600">Line Chart page </h1>}
           />
+          <Route path="*" element={<Dashboard />} />
         </Routes>
       </div>
     </div>
