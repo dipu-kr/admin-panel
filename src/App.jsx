@@ -2,6 +2,7 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
 import PageNotFound from "./pages/PageNotFound";
 import { Routes, Route } from "react-router-dom";
 
@@ -15,11 +16,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
-          <Route
-            exact
-            path="/users"
-            element={<h1 className="text-green-600">users page</h1>}
-          />
+          <Route exact path="/users" element={<Users />} />
           <Route
             exact
             path="/contact&information"
