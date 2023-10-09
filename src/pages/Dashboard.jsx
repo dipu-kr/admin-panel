@@ -9,7 +9,7 @@ import StateBox from "../components/StateBox";
 
 const Dashboard = () => {
   return (
-    <Box className="h-[calc(100vh-38-8px-8px)]">
+    <Box className="h-[calc(100vh-38px-8px-8px)]">
       <Box className="h-[50px] flex justify-between items-end my-4">
         <Box>
           <Typography
