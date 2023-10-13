@@ -33,8 +33,10 @@ body {
 
 .app {
   width: 100%;
+  height: 100vh;
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 .left_container {
   /* border: 2px solid gray; */
@@ -48,10 +50,10 @@ body {
 }
 
 /* ----------sidebar bg color and text color-------- */
-.apple {
+/* .apple {
   background-color: #252b36;
-  /* color: #979aaa; */
-}
+  color: #979aaa;
+} */
 button,
 input,
 optgroup,

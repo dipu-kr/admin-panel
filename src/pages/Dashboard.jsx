@@ -61,7 +61,7 @@ const Dashboard = () => {
         />
       </Box>
       {/* ------------------------------------- */}
-      <Box className="grid grid-cols-3 gap-4 mt-4">
+      <Box className=" grid grid-cols-3 gap-4 mt-4">
         <Box className="max-h-[calc(100vh-38px-8px-8px-50px-90px-32px-20px)] bg-[#1a2233] text-white col-span-2">
           <DashboardLineChart />
         </Box>

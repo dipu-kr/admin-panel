@@ -110,8 +110,9 @@ const Sidebar = () => {
           <ul>
             <li
               className={
-                !isSidebarOpen &&
-                "transition-all duration-300 delay-75 ease-linear"
+                isSidebarOpen === false
+                  ? "transition-all duration-300 delay-75 ease-linear"
+                  : ""
               }
             >
               {menuList.map((menu, index) => (
