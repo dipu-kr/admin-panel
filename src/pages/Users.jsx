@@ -16,7 +16,7 @@ const Users = () => {
           User list
         </Typography>
       </Box>
-      <Box className="h-[calc(100vh-38px-8px-8px-30px-32px)] border border-red-600 text-white">
+      <Box className="h-[calc(100vh-38px-8px-8px-30px-32px)] text-white">
         <UserListTable mData={mData} />
       </Box>
     </Box>

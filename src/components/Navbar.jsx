@@ -11,7 +11,7 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="bg-transparent py-1 pl-2 border-none outline-none text-white text-[14px] cursor-pointer"
+          className="w-[200px] bg-transparent py-2 pl-2 border-none outline-none text-white text-[13px] cursor-pointer"
         />
         <SearchOutlinedIcon className="text-white" />
       </Box>

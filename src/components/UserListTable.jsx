@@ -1,69 +1,231 @@
 import React, { useMemo } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/DeleteOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import CancelIcon from "@mui/icons-material/Close";
 import {
-  useReactTable,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-} from "@tanstack/react-table";
+  GridRowModes,
+  DataGrid,
+  GridToolbarContainer,
+  GridActionsCellItem,
+  GridRowEditStopReasons,
+} from "@mui/x-data-grid";
+
+// editable function
+
+// function EditToolbar(props) {
+//   const { setRows, setRowModesModel } = props;
+
+//   const handleClick = () => {
+//     const id = randomId();
+//     setRows((oldRows) => [...oldRows, { id, name: "", age: "", isNew: true }]);
+//     setRowModesModel((oldModel) => ({
+//       ...oldModel,
+//       [id]: { mode: GridRowModes.Edit, fieldToFocus: "name" },
+//     }));
+//   };
+
+//   return (
+//     <GridToolbarContainer>
+//       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+//         Add record
+//       </Button>
+//     </GridToolbarContainer>
+//   );
+// }
 
 const UserListTable = ({ mData }) => {
-  const data = useMemo(() => mData, []);
+  const [rows, setRows] = React.useState(mData);
+  const [rowModesModel, setRowModesModel] = React.useState({});
 
-  /**@type import('@tanstack/react-table').columnDef<any> */
+  const handleRowEditStop = (params, event) => {
+    if (params.reason === GridRowEditStopReasons.rowFocusOut) {
+      event.defaultMuiPrevented = true;
+    }
+  };
+
+  const handleEditClick = (id) => () => {
+    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+    const editedRow = rows.find((row) => row.id === id);
+    console.log("edit data", editedRow);
+  };
+
+  const handleSaveClick = (id) => () => {
+    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
+  };
+
+  const handleDeleteClick = (id) => () => {
+    setRows(rows.filter((row) => row.id !== id));
+  };
+
+  const handleCancelClick = (id) => () => {
+    setRowModesModel({
+      ...rowModesModel,
+      [id]: { mode: GridRowModes.View, ignoreModifications: true },
+    });
+
+    const editedRow = rows.find((row) => row.id === id);
+    if (editedRow.isNew) {
+      setRows(rows.filter((row) => row.id !== id));
+    }
+  };
+
+  const processRowUpdate = (newRow) => {
+    const updatedRow = { ...newRow, isNew: false };
+    setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+    return updatedRow;
+  };
+
+  const handleRowModesModelChange = (newRowModesModel) => {
+    setRowModesModel(newRowModesModel);
+  };
+
   const columns = [
+    { field: "id", headerName: "ID", width: 100 },
     {
-      header: "ID",
-      accessorKey: "id",
+      field: "first_name",
+      headerName: "First Name",
+      flex: 1,
+      editable: true,
     },
     {
-      header: "First Name",
-      accessorKey: "first_name",
+      field: "last_name",
+      headerName: "Last Name",
+      flex: 1,
+      editable: true,
     },
     {
-      header: "Last Name",
-      accessorKey: "last_name",
+      field: "email",
+      headerName: "Email",
+      flex: 1,
+      editable: true,
     },
     {
-      header: "Email",
-      accessorKey: "email",
+      field: "gender",
+      headerName: "Gender",
+      flex: 1,
+      editable: true,
     },
     {
-      header: "Gender",
-      accessorKey: "gender",
+      field: "ip_address",
+      headerName: "IP Address",
+      flex: 1,
+      editable: true,
     },
     {
-      header: "IP Address",
-      accessorKey: "id_address",
+      field: "actions",
+      type: "actions",
+      headerName: "Actions",
+      flex: 1,
+      cellClassName: "actions",
+      getActions: ({ id }) => {
+        const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
+
+        if (isInEditMode) {
+          return [
+            <GridActionsCellItem
+              icon={<SaveIcon />}
+              label="Save"
+              sx={{
+                color: "gray",
+              }}
+              onClick={handleSaveClick(id)}
+            />,
+            <GridActionsCellItem
+              icon={<CancelIcon />}
+              label="Cancel"
+              className="textPrimary"
+              onClick={handleCancelClick(id)}
+              color="inherit"
+            />,
+          ];
+        }
+
+        return [
+          <GridActionsCellItem
+            icon={<EditIcon />}
+            label="Edit"
+            className="textPrimary"
+            onClick={handleEditClick(id)}
+            color="blue"
+          />,
+          <GridActionsCellItem
+            icon={<DeleteIcon />}
+            label="Delete"
+            onClick={handleDeleteClick(id)}
+            color="inherit"
+          />,
+        ];
+      },
     },
   ];
 
-  const tableInstance = useReactTable({
-    columns,
-    data,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-  });
-
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>11100</td>
-            <td>Dipu Kumar</td>
-            <td>text@gmail.com</td>
-          </tr>
-        </tbody>
-      </table>
+    // <Box
+    //   sx={{
+    //     height: 500,
+    //     text: "white",
+    //     width: "100%",
+    //     "& .first_name": {
+    //       color: "white",
+    //     },
+    //     "& .actions": {
+    //       color: "white",
+    //     },
+    //     "& .textPrimary": {
+    //       color: "white",
+    //     },
+    //   }}
+    // >
+    <div className="h-[calc(100vh-38px-8px-8px-30px-32px)] text-white">
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        editMode="row"
+        rowModesModel={rowModesModel}
+        onRowModesModelChange={handleRowModesModelChange}
+        onRowEditStop={handleRowEditStop}
+        processRowUpdate={processRowUpdate}
+        initialState={{
+          ...rows.initialState,
+          pagination: {
+            ...rows.initialState?.pagination,
+            paginationModel: {
+              pageSize: 15,
+            },
+          },
+        }}
+        pageSizeOptions={[15, 20, 30]}
+        sx={{
+          backgroundColor: "#1a2233",
+          boxShadow: 2,
+          // border: 2,
+          // borderColor: "red",
+          "& .MuiDataGrid-cell": {
+            color: "white",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            color: "white",
+          },
+          "& .css-ptiqhd-MuiSvgIcon-root": {
+            color: "white",
+          },
+          "& .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar": {
+            color: "white",
+          },
+          "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+            color: "white",
+          },
+          "& .css-s1v7zr-MuiDataGrid-virtualScrollerRenderZone": {
+            borderColor: "red",
+          },
+        }}
+      />
     </div>
+    // </Box>
   );
 };
 
