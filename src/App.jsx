@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
+import ProfileForm from "./pages/ProfileForm";
 import PageNotFound from "./pages/PageNotFound";
 import { Routes, Route } from "react-router-dom";
 
@@ -17,7 +18,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<Users />} />
-          <Route
+          {/* <Route
             exact
             path="/contact&information"
             element={<h1 className="text-green-600">contact information</h1>}
@@ -26,12 +27,8 @@ function App() {
             exact
             path="/invoices&Balances"
             element={<h1 className="text-green-600">invoices balances</h1>}
-          />
-          <Route
-            exact
-            path="/profile&Form"
-            element={<h1 className="text-green-600">profile form</h1>}
-          />
+          /> */}
+          <Route exact path="/profile&Form" element={<ProfileForm />} />
           <Route
             exact
             path="/calender"

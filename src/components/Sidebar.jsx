@@ -33,16 +33,16 @@ const Sidebar = () => {
       icon: <PeopleOutlinedIcon />,
       link: "/users",
     },
-    {
-      title: "Contacts Information",
-      icon: <ContactsOutlinedIcon />,
-      link: "/contact&information",
-    },
-    {
-      title: "Invoices Balances",
-      icon: <ReceiptOutlinedIcon />,
-      link: "/invoices&Balances",
-    },
+    // {
+    //   title: "Contacts Information",
+    //   icon: <ContactsOutlinedIcon />,
+    //   link: "/contact&information",
+    // },
+    // {
+    //   title: "Invoices Balances",
+    //   icon: <ReceiptOutlinedIcon />,
+    //   link: "/invoices&Balances",
+    // },
     {
       title: "Profile Form",
       icon: <PersonOutlinedIcon />,
