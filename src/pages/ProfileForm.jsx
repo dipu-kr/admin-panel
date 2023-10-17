@@ -127,7 +127,7 @@ const ProfileForm = () => {
                   name="address1"
                   placeholder="Address 1"
                   autoComplete="off"
-                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-xs text-sm"
+                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
                 />
                 <ErrorMessage
                   name="address1"

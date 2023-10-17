@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import "../App.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
@@ -50,7 +51,6 @@ const UserListTable = ({ mData }) => {
   const handleEditClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
     const editedRow = rows.find((row) => row.id === id);
-    console.log("edit data", editedRow);
   };
 
   const handleSaveClick = (id) => () => {
@@ -75,6 +75,7 @@ const UserListTable = ({ mData }) => {
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
+    handleRowUpdate(updatedRow);
     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
     return updatedRow;
   };
@@ -83,8 +84,13 @@ const UserListTable = ({ mData }) => {
     setRowModesModel(newRowModesModel);
   };
 
+  // -------------------api call for updated row data--------------
+  const handleRowUpdate = (updatedRow) => {
+    console.log("Updated Row Data: ", updatedRow);
+  };
+
   const columns = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "id", headerName: "ID", width: 100, editable: true },
     {
       field: "first_name",
       headerName: "First Name",
@@ -130,7 +136,8 @@ const UserListTable = ({ mData }) => {
               icon={<SaveIcon />}
               label="Save"
               sx={{
-                color: "gray",
+                color: "white",
+                background: "gray",
               }}
               onClick={handleSaveClick(id)}
             />,
@@ -139,7 +146,11 @@ const UserListTable = ({ mData }) => {
               label="Cancel"
               className="textPrimary"
               onClick={handleCancelClick(id)}
-              color="inherit"
+              // color="inherit"
+              sx={{
+                color: "white",
+                background: "gray",
+              }}
             />,
           ];
         }
@@ -150,7 +161,7 @@ const UserListTable = ({ mData }) => {
             label="Edit"
             className="textPrimary"
             onClick={handleEditClick(id)}
-            color="blue"
+            color="inherit"
           />,
           <GridActionsCellItem
             icon={<DeleteIcon />}
@@ -164,23 +175,7 @@ const UserListTable = ({ mData }) => {
   ];
 
   return (
-    // <Box
-    //   sx={{
-    //     height: 500,
-    //     text: "white",
-    //     width: "100%",
-    //     "& .first_name": {
-    //       color: "white",
-    //     },
-    //     "& .actions": {
-    //       color: "white",
-    //     },
-    //     "& .textPrimary": {
-    //       color: "white",
-    //     },
-    //   }}
-    // >
-    <div className="h-[calc(100vh-38px-8px-8px-30px-32px)] text-white">
+    <div className="w-full h-[calc(100vh-38px-8px-8px-30px-32px)]">
       <DataGrid
         rows={rows}
         columns={columns}
@@ -202,8 +197,6 @@ const UserListTable = ({ mData }) => {
         sx={{
           backgroundColor: "#1a2233",
           boxShadow: 2,
-          // border: 2,
-          // borderColor: "red",
           "& .MuiDataGrid-cell": {
             color: "white",
           },
@@ -219,13 +212,9 @@ const UserListTable = ({ mData }) => {
           "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
             color: "white",
           },
-          "& .css-s1v7zr-MuiDataGrid-virtualScrollerRenderZone": {
-            borderColor: "red",
-          },
         }}
       />
     </div>
-    // </Box>
   );
 };
 
