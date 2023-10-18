@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import ProfileForm from "./pages/ProfileForm";
+import CalendarPage from "./pages/CalendarPage";
 import PageNotFound from "./pages/PageNotFound";
 import { Routes, Route } from "react-router-dom";
 
@@ -29,11 +30,7 @@ function App() {
             element={<h1 className="text-green-600">invoices balances</h1>}
           /> */}
           <Route exact path="/profile&Form" element={<ProfileForm />} />
-          <Route
-            exact
-            path="/calender"
-            element={<h1 className="text-green-600">calender page</h1>}
-          />
+          <Route exact path="/calender" element={<CalendarPage />} />
           <Route
             exact
             path="/faq&page"
