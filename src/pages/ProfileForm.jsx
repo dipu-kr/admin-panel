@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Typography, Button } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
@@ -46,7 +47,9 @@ const ProfileForm = () => {
   };
   return (
     <div className="w-full mt-5">
-      <h1 className="text-white text-lg uppercase">Create user</h1>
+      <Typography variant="h6" component="h6" className="text-white uppercase">
+        Create user
+      </Typography>
       <p className="text-[#16a37f] text-xs">Create a New User Profile</p>
       <div className="pt-4">
         <Formik

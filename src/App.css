@@ -82,3 +82,10 @@ textarea {
 .transaction-card::-webkit-scrollbar-thumb:hover {
   background: #e9e4e4;
 }
+.calendar_class {
+  height: calc(100vh-38px-8px-8px-20px);
+  overflow-y: scroll;
+}
+/* .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  
+} */
