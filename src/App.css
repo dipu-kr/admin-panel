@@ -89,3 +89,7 @@ textarea {
 /* .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   
 } */
+.css-hlj6pa-MuiDialogActions-root {
+  display: flex;
+  justify-content: space-between !important;
+}

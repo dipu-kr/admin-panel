@@ -22,6 +22,7 @@ const CalendarPage = () => {
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [events, setEvents] = useState([]);
+  console.log(events);
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   // ----------functions------------
@@ -92,8 +93,8 @@ const CalendarPage = () => {
   };
 
   return (
-    <div className="max-h-[calc(100vh-38px-8px-8px-20px)] mt-5 calendar_class">
-      <div className="max-h-[calc(100vh-38px-8px-8px-20px)] text-white">
+    <div className="w-full max-h-[calc(100vh-38px-8px-8px-20px)] mt-5 calendar_class">
+      <div className="w-full max-h-[calc(100vh-38px-8px-8px-20px)] text-white">
         <div>
           <Button onClick={() => setView("dayGridDay")}>Day</Button>
           <Button onClick={() => setView("dayGridWeek")}>Week</Button>
@@ -187,7 +188,7 @@ const CalendarPage = () => {
                 </form>
               )}
             </DialogContent>
-            <DialogActions className="mx-4">
+            <DialogActions className="mx-4 border-2 flex justify-between">
               <Button
                 onClick={handleDialogClose}
                 variant="outlined"

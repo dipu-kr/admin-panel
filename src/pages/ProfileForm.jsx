@@ -31,20 +31,6 @@ const validationSchema = Yup.object({
 });
 
 const ProfileForm = () => {
-  const onSubmit = (values) => {
-    if (
-      values.firstName &&
-      values.lastName &&
-      values.email &&
-      values.phoneNumber &&
-      values.address1 &&
-      values.address2
-    ) {
-      toast.success("successfully created");
-    }
-    // Handle form submission here, e.g., make an API request
-    console.log(values);
-  };
   return (
     <div className="w-full mt-5">
       <Typography variant="h6" component="h6" className="text-white uppercase">
@@ -55,114 +41,127 @@ const ProfileForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={onSubmit}
+          onSubmit={(values, { resetForm }) => {
+            if (
+              values.firstName &&
+              values.lastName &&
+              values.email &&
+              values.phoneNumber &&
+              values.address1 &&
+              values.address2
+            ) {
+              toast.success("Successfully created");
+              resetForm();
+            }
+            // Handle form submission here, e.g., make an API request
+            console.log(values);
+          }}
         >
-          {() => (
-            <Form>
-              <div className="w-full grid grid-cols-2 gap-4 mb-4">
-                <div className="">
-                  <Field
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    placeholder="First Name"
-                    autoComplete="off"
-                    className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
-                  />
+          <Form>
+            <div className="w-full grid grid-cols-2 gap-4 mb-4">
+              <div className="">
+                <Field
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="First Name"
+                  autoComplete="off"
+                  // onFocus={Formik.handleFocus}
+                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm focus:border focus:border-red-600"
+                />
 
-                  <ErrorMessage
-                    name="firstName"
-                    component="div"
-                    className="text-xs text-red-400"
-                  />
-                </div>
-                <div className="">
-                  <Field
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Last Name"
-                    autoComplete="off"
-                    className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
-                  />
-                  <ErrorMessage
-                    name="lastName"
-                    component="div"
-                    className="text-xs text-red-400"
-                  />
-                </div>
+                <ErrorMessage
+                  name="firstName"
+                  component="div"
+                  className="text-xs text-red-400"
+                />
               </div>
+              <div className="">
+                <Field
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Last Name"
+                  autoComplete="off"
+                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
+                />
+                <ErrorMessage
+                  name="lastName"
+                  component="div"
+                  className="text-xs text-red-400"
+                />
+              </div>
+            </div>
 
-              <div className="w-full mb-4">
-                <Field
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  autoComplete="off"
-                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-xs text-red-400"
-                />
-              </div>
-              <div className="w-full mb-4">
-                <Field
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  placeholder="Phone Number"
-                  autoComplete="off"
-                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
-                />
-                <ErrorMessage
-                  name="phoneNumber"
-                  component="div"
-                  className="text-xs text-red-400"
-                />
-              </div>
-              <div className="w-full mb-4">
-                <Field
-                  type="text"
-                  id="address1"
-                  name="address1"
-                  placeholder="Address 1"
-                  autoComplete="off"
-                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
-                />
-                <ErrorMessage
-                  name="address1"
-                  component="div"
-                  className="text-xs text-red-400"
-                />
-              </div>
-              <div className="w-full mb-4">
-                <Field
-                  type="text"
-                  id="address2"
-                  name="address2"
-                  placeholder="Address 2"
-                  autoComplete="off"
-                  className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
-                />
-                <ErrorMessage
-                  name="address2"
-                  component="div"
-                  className="text-xs text-red-400"
-                />
-              </div>
-              <div className="text-right">
-                <button
-                  type="submit"
-                  className="bg-[#16a37f] py-[5px] px-[25px] shadow-lg rounded-sm uppercase text-sm hover:bg-[#5aaf9c] hover:transition-all ease-in-out duration-300"
-                >
-                  create new user
-                </button>
-              </div>
-            </Form>
-          )}
+            <div className="w-full mb-4">
+              <Field
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Email"
+                autoComplete="off"
+                className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="text-xs text-red-400"
+              />
+            </div>
+            <div className="w-full mb-4">
+              <Field
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="Phone Number"
+                autoComplete="off"
+                className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
+              />
+              <ErrorMessage
+                name="phoneNumber"
+                component="div"
+                className="text-xs text-red-400"
+              />
+            </div>
+            <div className="w-full mb-4">
+              <Field
+                type="text"
+                id="address1"
+                name="address1"
+                placeholder="Address 1"
+                autoComplete="off"
+                className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
+              />
+              <ErrorMessage
+                name="address1"
+                component="div"
+                className="text-xs text-red-400"
+              />
+            </div>
+            <div className="w-full mb-4">
+              <Field
+                type="text"
+                id="address2"
+                name="address2"
+                placeholder="Address 2"
+                autoComplete="off"
+                className="w-full h-[38px] bg-slate-800 text-white border-none outline-none pl-4 rounded-sm text-sm"
+              />
+              <ErrorMessage
+                name="address2"
+                component="div"
+                className="text-xs text-red-400"
+              />
+            </div>
+            <div className="text-right">
+              <button
+                type="submit"
+                className="bg-[#16a37f] py-[5px] px-[25px] shadow-lg rounded-sm uppercase text-sm hover:bg-[#5aaf9c] hover:transition-all ease-in-out duration-300"
+              >
+                create new user
+              </button>
+            </div>
+          </Form>
         </Formik>
       </div>
       <Toaster />
