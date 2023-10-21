@@ -12,6 +12,7 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import DonutLargeOutlinedIcon from "@mui/icons-material/DonutLargeOutlined";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -69,9 +70,9 @@ const Sidebar = () => {
       link: "/pie&Chart",
     },
     {
-      title: "Line Chart",
-      icon: <TimelineOutlinedIcon />,
-      link: "/line&Chart",
+      title: "Doughnut Chart",
+      icon: <DonutLargeOutlinedIcon />,
+      link: "/doughnut&Chart",
     },
   ];
   // --------------------------------------------

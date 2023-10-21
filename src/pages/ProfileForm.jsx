@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
@@ -156,7 +156,7 @@ const ProfileForm = () => {
             <div className="text-right">
               <button
                 type="submit"
-                className="bg-[#16a37f] py-[5px] px-[25px] shadow-lg rounded-sm uppercase text-sm hover:bg-[#5aaf9c] hover:transition-all ease-in-out duration-300"
+                className="bg-[#16a37f] py-[8px] px-[25px] shadow-lg rounded-sm uppercase text-sm hover:bg-[#5aaf9c] hover:transition-all ease-in-out duration-300"
               >
                 create new user
               </button>

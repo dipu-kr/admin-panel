@@ -93,3 +93,7 @@ textarea {
   display: flex;
   justify-content: space-between !important;
 }
+.faq-container {
+  min-height: calc(100vh-38px-8px-8px-20px);
+  overflow-y: scroll;
+}

@@ -188,7 +188,7 @@ const CalendarPage = () => {
                 </form>
               )}
             </DialogContent>
-            <DialogActions className="mx-4 border-2 flex justify-between">
+            <DialogActions className="mx-4 flex justify-between">
               <Button
                 onClick={handleDialogClose}
                 variant="outlined"

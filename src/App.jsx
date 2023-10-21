@@ -5,6 +5,10 @@ import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import ProfileForm from "./pages/ProfileForm";
 import CalendarPage from "./pages/CalendarPage";
+import Faq from "./pages/Faq";
+import BarChart from "./pages/BarChart";
+import PieChart from "./pages/PieChart";
+import DoughnutChart from "./pages/DoughnutChart";
 import PageNotFound from "./pages/PageNotFound";
 import { Routes, Route } from "react-router-dom";
 
@@ -19,38 +23,12 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/users" element={<Users />} />
-          {/* <Route
-            exact
-            path="/contact&information"
-            element={<h1 className="text-green-600">contact information</h1>}
-          />
-          <Route
-            exact
-            path="/invoices&Balances"
-            element={<h1 className="text-green-600">invoices balances</h1>}
-          /> */}
           <Route exact path="/profile&Form" element={<ProfileForm />} />
           <Route exact path="/calender" element={<CalendarPage />} />
-          <Route
-            exact
-            path="/faq&page"
-            element={<h1 className="text-green-600">FAQ page</h1>}
-          />
-          <Route
-            exact
-            path="/bar&Chart"
-            element={<h1 className="text-green-600">Bar Charts page</h1>}
-          />
-          <Route
-            exact
-            path="/pie&Chart"
-            element={<h1 className="text-green-600">Pie Chart</h1>}
-          />
-          <Route
-            exact
-            path="/line&Chart"
-            element={<h1 className="text-green-600">Line Chart page </h1>}
-          />
+          <Route exact path="/faq&page" element={<Faq />} />
+          <Route exact path="/bar&Chart" element={<BarChart />} />
+          <Route exact path="/pie&Chart" element={<PieChart />} />
+          <Route exact path="/doughnut&Chart" element={<DoughnutChart />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
