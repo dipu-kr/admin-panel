@@ -51,7 +51,7 @@ const Sidebar = () => {
     },
     {
       title: "Calender",
-      icon: <CalendarTodayOutlinedIcon />,
+      icon: <CalendarTodayOutlinedIcon sx={{ fontSize: "20px" }} />,
       link: "/calender",
     },
     {

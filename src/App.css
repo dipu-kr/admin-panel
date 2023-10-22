@@ -97,3 +97,8 @@ textarea {
   min-height: calc(100vh-38px-8px-8px-20px);
   overflow-y: scroll;
 }
+
+.selected-row {
+  background-color: #007bff !important; /* Change this to the desired background color */
+  color: white; /* Change this to the desired text color */
+}

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import "../App.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -39,8 +39,8 @@ import {
 // }
 
 const UserListTable = ({ mData }) => {
-  const [rows, setRows] = React.useState(mData);
-  const [rowModesModel, setRowModesModel] = React.useState({});
+  const [rows, setRows] = useState(mData);
+  const [rowModesModel, setRowModesModel] = useState({});
 
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
@@ -195,7 +195,7 @@ const UserListTable = ({ mData }) => {
         }}
         pageSizeOptions={[15, 20, 30]}
         sx={{
-          backgroundColor: "#1a2233",
+          // backgroundColor: "#1a2233",
           boxShadow: 2,
           "& .MuiDataGrid-cell": {
             color: "white",
@@ -211,6 +211,10 @@ const UserListTable = ({ mData }) => {
           },
           "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
             color: "white",
+          },
+          "& .MuiDataGrid-row:hover": {
+            backgroundColor: "#1a2233",
+            cursor: "pointer",
           },
         }}
       />
